@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root { height: 100%; }
+  body {
+    background: #1a1410;
+    color: #ede0c8;
+    font-family: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: #e8a05a55; color: #fff8e7; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #150f0c; }
+  ::-webkit-scrollbar-thumb { background: #3a2c1f; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #5c4631; }
+}
+
+@layer components {
+  .paper-grid {
+    /* horizontal-rule notebook paper feel */
+    background-image: linear-gradient(to bottom, transparent 31px, rgba(232,160,90,0.06) 32px);
+    background-size: 100% 32px;
+  }
+  .crt-scan {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(0,0,0,0.18) 3px,
+      transparent 4px
+    );
+    pointer-events: none;
+  }
+  .ink-shadow {
+    box-shadow:
+      0 0 0 1px rgba(232,160,90,0.18),
+      0 20px 60px -20px rgba(184,68,46,0.35),
+      inset 0 0 80px -40px rgba(232,160,90,0.18);
+  }
+  .stamp {
+    @apply inline-flex items-center gap-1 px-2 py-[2px] border border-warm-rust/50 text-warm-rust uppercase tracking-widest text-[10px] rotate-[-2deg];
+  }
+  .line-number {
+    @apply text-ink-muted/60 text-right pr-4 select-none tabular-nums;
+  }
+  .kw { @apply text-syntax-keyword; }
+  .str { @apply text-syntax-string; }
+  .num { @apply text-syntax-number; }
+  .fn  { @apply text-syntax-fn; }
+  .cm  { @apply text-syntax-comment italic; }
+  .tg  { @apply text-syntax-tag; }
+  .vr  { @apply text-syntax-var; }
+}
